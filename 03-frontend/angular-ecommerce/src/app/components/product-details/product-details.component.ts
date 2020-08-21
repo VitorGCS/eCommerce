@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  product: Product;
+  product: Product = new Product();
 
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
@@ -30,6 +30,9 @@ export class ProductDetailsComponent implements OnInit {
         this.product = data;
       }
     )
+    /*NOTE: Property is not assigned a value until data arrives from the ProductService method call - Ascync call 
+    => THis is a race condition The HTML template file is attempting to access property: product.imageUrl, but product is not assigned yet...hence the error
+    */
   }
 
 }
