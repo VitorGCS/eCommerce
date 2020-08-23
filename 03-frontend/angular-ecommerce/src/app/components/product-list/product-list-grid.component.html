@@ -1,7 +1,5 @@
 <div class="main-content">
     <div class="section-content section-content-p30">
-        <h4>Category: {{currentCategoryName}} </h4>
-        <hr>
         <div class="container-fluid">
             <div class="row">
 
@@ -9,35 +7,36 @@
                 <div *ngFor="let tempProduct of products" class="col-md-3">
 
                     <div class="product-box">
-                        <!--Add a link on the product image-->
-                        <a routerLink="/products/{{ tempProduct.id}}">
-                            <img src="{{tempProduct.imageUrl}}" class="img-responsive">
+
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
                         </a>
 
-                        <!--Add a link on the product image-->
-                        <a routerLink="/products/{{ tempProduct.id}}">
-                            <h1>{{tempProduct.name}}</h1>
+                        <a routerLink="/products/{{ tempProduct.id }}">
+                            <h1>{{ tempProduct.name }}</h1>
                         </a>
-
-                        <div class="price">{{ tempProduct.unitPrice | currency:'USD'}} </div>
-                        <a href=# class="primary-btn">Add to cart</a>
+                        
+                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
+                        <a href="#" class="primary-btn">Add to cart</a>
                     </div>
+
                 </div>
 
-                <!-- if products empty then display a message -->
+                <!-- if products empty then display a message-->
                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                    <!--if (products is null/undefined) or (products.length == 0) display: "No products found."-->
                     No products found.
                 </div>
+
             </div>
 
-            <!-- begin footer  add pagination component-->
+            <!-- begin footer -->
             <div class="footer-pagination">
                 <div class="row">
                     <div class="col-md-6"></div>
+
                     <div class="col-md-6">
                         <div class="row">
-                            <div class="col-md-9" style="padding-left:30%">
+                            <div class="col-md-9" style="padding-left: 30%">
                             
                                 <ngb-pagination [(page)]="thePageNumber"
                                                 [pageSize]="thePageSize"
@@ -45,14 +44,15 @@
                                                 (pageChange)="listProducts()">
 
                                 </ngb-pagination>
-                            
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+            <!-- end footer -->
 
-            <!--end footer-->
         </div>
     </div>
 </div>
