@@ -1,5 +1,6 @@
 package com.luv2code.ecommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,8 +24,8 @@ public class Country {
     @Column(name="name")
     private String name;
 
-    //TODO: Set up one-to-many with states
     @OneToMany(mappedBy = "country")
+    @JsonIgnore
     private List<State> states;
 
 }
